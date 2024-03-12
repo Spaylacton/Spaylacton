@@ -1,6 +1,7 @@
 # basit_tools.py
 
 import os
+import sys
 
 def list_files(directory):
     """
@@ -55,35 +56,46 @@ def rename_file(old_name, new_name):
     except Exception as e:
         print(f"Hata: {e}")
 
+def exit_program():
+    """
+    Programdan çıkış yapar.
+    """
+    print("Programdan çıkılıyor.")
+    sys.exit()
+
 def main():
-    print("1. Dosyaları Listele")
-    print("2. Dosya Oluştur")
-    print("3. Metin Dosyasına Yaz")
-    print("4. Dosya Sil")
-    print("5. Dosya İsmini Değiştir")
+    while True:
+        print("1. Dosyaları Listele")
+        print("2. Dosya Oluştur")
+        print("3. Metin Dosyasına Yaz")
+        print("4. Dosya Sil")
+        print("5. Dosya İsmini Değiştir")
+        print("6. Çıkış")
 
-    choice = input("Seçiminizi yapın (1, 2, 3, 4 veya 5): ")
+        choice = input("Seçiminizi yapın (1, 2, 3, 4, 5 veya 6): ")
 
-    if choice == '1':
-        directory = input("Listelemek istediğiniz dizini girin: ")
-        list_files(directory)
-    elif choice == '2':
-        file_name = input("Oluşturmak istediğiniz dosyanın adını girin: ")
-        content = input("Dosyanın içeriğini girin: ")
-        create_file(file_name, content)
-    elif choice == '3':
-        file_name = input("Yazmak istediğiniz metin dosyasının adını girin: ")
-        content = input("Dosyaya yazmak istediğiniz içeriği girin: ")
-        write_to_text_file(file_name, content)
-    elif choice == '4':
-        file_name = input("Silmek istediğiniz dosyanın adını girin: ")
-        delete_file(file_name)
-    elif choice == '5':
-        old_name = input("Değiştirmek istediğiniz dosyanın adını girin: ")
-        new_name = input("Yeni adı girin: ")
-        rename_file(old_name, new_name)
-    else:
-        print("Geçersiz seçim.")
+        if choice == '1':
+            directory = input("Listelemek istediğiniz dizini girin: ")
+            list_files(directory)
+        elif choice == '2':
+            file_name = input("Oluşturmak istediğiniz dosyanın adını girin: ")
+            content = input("Dosyanın içeriğini girin: ")
+            create_file(file_name, content)
+        elif choice == '3':
+            file_name = input("Yazmak istediğiniz metin dosyasının adını girin: ")
+            content = input("Dosyaya yazmak istediğiniz içeriği girin: ")
+            write_to_text_file(file_name, content)
+        elif choice == '4':
+            file_name = input("Silmek istediğiniz dosyanın adını girin: ")
+            delete_file(file_name)
+        elif choice == '5':
+            old_name = input("Değiştirmek istediğiniz dosyanın adını girin: ")
+            new_name = input("Yeni adı girin: ")
+            rename_file(old_name, new_name)
+        elif choice == '6':
+            exit_program()
+        else:
+            print("Geçersiz seçim.")
 
 if __name__ == "__main__":
     main()
